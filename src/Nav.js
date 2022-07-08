@@ -1,16 +1,18 @@
 import React from 'react';
 import './App.css';
-
+import './Nav.css';
+import link from './img/link.png';
 function Nav() {
   return (
     <nav>
-        <h3>Logo</h3>
+        <img src={link} alt="Logo Link" className = "link_icon"/>
         <ul className='nav-links'>
-            <li><a href="/about">About</a></li>
-            <li>Shop</li>
+            <li><a href="/manage-clubs" class="button">Manage Clubs</a></li>
+            <li><a href="/asb" class="button">ASB</a></li>
+            <li><a href="/login" class="button">Login</a></li>
 
         </ul>
-    </nav>
+    </nav>  
   );
 }
 
