@@ -1,0 +1,54 @@
+/* Resets values to prevent render problems */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+  
+  nav {
+    width: 100%;
+    padding: 20px;
+    height: 140px;
+    background-color: rgb(136,12,12);
+  
+    display: block;
+    box-sizing: border-box;
+  }
+  
+  .link_icon {
+    width: 100px;
+    height: 100px;
+    float: left;
+    display: flex;
+    margin-left: 30px;
+  }
+  
+  .button {
+    margin-top: 65px;
+    margin-left: 15px;
+    padding: 6px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 5px;
+    
+    background-color: rgb(196,41,50);
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+  
+    float: right;
+  }
+  .nav-links {
+    width: 50%;
+    display: flex;
+    float: right;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+  }
