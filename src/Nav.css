@@ -30,7 +30,7 @@
   }
   
   .button {
-    margin-top: 65px;
+    margin-top: 20px;
     margin-left: 15px;
     padding: 6px;
     padding-left: 14px;
@@ -44,6 +44,7 @@
   
     float: right;
   }
+
   .nav-links {
     width: 50%;
     display: flex;
