@@ -8,6 +8,8 @@ const Login = (props) => {
     const [userName, setUserName] = useState(""); 
     const [password, setPassword] = useState(""); 
     const [badLogin, setBadLogin] = useState("");
+    const [passwordShown, setPasswordShown] = useState(false);
+
     const makeVisibleCSS = {
         opacity: 1,
         visibility: "visible"
@@ -29,7 +31,12 @@ const Login = (props) => {
                 setBadLogin(json["failType"]);
             }
         });
-    } 
+    }
+
+    const onToggleShow = (e) => {
+        setPasswordShown(!passwordShown);
+    }
+
     return ( 
     <div className = "user-modal">
     <div className="user-modal-container">
@@ -47,18 +54,13 @@ const Login = (props) => {
 
                 <p className="fieldset">
                     <label className="image-replace password" for="signin-password">Password</label>
-                    <input onChange = {changePassword} value = {password} className="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password"/>
-                    <a href="#0" className="hide-password">Show</a>
+                    <input onChange = {changePassword} value = {password} className="full-width has-padding has-border" id="signin-password" type={passwordShown ? "text" : "password"} placeholder="Password"/>
+                    <a style={{userSelect: "none"}} onClick={onToggleShow} className="hide-password">{passwordShown ? "Hide" : "Show"}</a>
                     <span style = {(badLogin === "password") ? makeVisibleCSS : null} className="error-message">Wrong password! Try again.</span>
                 </p>
 
                 <p className="fieldset">
-                    <input type="checkbox" id="remember-me" checked/>
-                    <label for="remember-me">Remember me</label>
-                </p>
-
-                <p className="fieldset">
-                    <div onClick className="full-width" value="Login"/> 
+                    <div onClick={onLogin} className="full-width submit">Login</div> 
                 </p>
             </div>
             
