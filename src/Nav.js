@@ -9,8 +9,8 @@ function Nav() {
         <ul className='nav-links'>
             <li><a href="/manage-clubs" class="button">Manage Clubs</a></li>
             <li><a href="/asb" class="button">ASB</a></li>
+            <li><a href="/about" class="button">About</a></li>
             <li><a href="/login" class="button">Login</a></li>
-
         </ul>
     </nav>  
   );
