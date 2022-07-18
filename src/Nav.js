@@ -7,7 +7,7 @@ function Nav() {
     <nav>
         <img src={link} alt="Logo Link" className = "link_icon"/>
         <ul className='nav-links'>
-            <li><a href="/featured-page">Home</a></li>
+            <li><a href="/featured-page" class="button">Home</a></li>
             <li><a href="/manage-clubs" class="button">Manage Clubs</a></li>
             <li><a href="/asb" class="button">ASB</a></li>
             <li><a href="/about" class="button">About</a></li>
