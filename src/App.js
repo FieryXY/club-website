@@ -3,6 +3,7 @@ import './App.css';
 import Nav from './Nav';
 import About from './About';
 import Shop from './Shop';
+import Intro from './Intro';
 import Login from './login';
 import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ function App() {
       <div className="App">
         <Nav />
           <Routes>
+              <Route path="/about" element={<Intro />} />
               <Route path="/manage-clubs" element={<About />} />
               <Route path="/asb" element={<About />} />
               <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}/>} />
