@@ -2,6 +2,9 @@ import React from "react";
 import FeaturedClubContent from "./featuredClubContent";
 
 function featuredPage() {
+
+  const {currentClubIndex, setCurrentClubIndex} = useState(0);
+
   return (
     <div className="featured-page-body">
       <div className="featured-clubs-container">

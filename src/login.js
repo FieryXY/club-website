@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import "./login.css"
-import { doLogin } from './ClubService.js';
+import "./login.css" 
+import ClubService from './ClubService.js';
 const Login = (props) => {
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
+
+    console.log(ClubService.doLogin);
+
+    const [userName, setUserName] = useState(""); 
+    const [password, setPassword] = useState(""); 
     const [badLogin, setBadLogin] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
 
@@ -18,8 +21,13 @@ const Login = (props) => {
     const changePassword = (e) => {
         setPassword(e.target.value);
     }
+
+
+   
+
+
     const onLogin = (e) => {
-        doLogin(userName, password).then(response => response.json()).then(json => {
+        ClubService.doLogin(userName, password).then(response => response.json()).then(json => {
             if(json["status"]) {
               if(json["status"] === 401) {
                 if(json["message"].toLowerCase().includes("email")) setBadLogin("email");

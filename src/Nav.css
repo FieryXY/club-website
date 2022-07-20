@@ -12,9 +12,10 @@
   }
   
   nav {
-    width: 100%;
+    width: max(100%, fit-content);
     padding: 20px;
-    height: 140px;
+    padding-bottom: 1px;
+    height: auto;
     background-color: rgb(136,12,12);
   
     display: block;
@@ -31,7 +32,7 @@
   
   .button {
     margin-top: 20px;
-    margin-left: 15px;
+    margin-left: 10px;
     padding: 6px;
     padding-left: 14px;
     padding-right: 14px;
@@ -41,15 +42,26 @@
     color: white;
     font-size: 20px;
     text-decoration: none;
-  
-    float: right;
   }
 
   .nav-links {
-    width: 50%;
+    width: fit-content;
     display: flex;
-    float: right;
+    margin-left: auto;
+    margin-right: 0;
     justify-content: space-around;
     align-items: center;
+    flex-direction: row;
     list-style: none;
   }
+
+@media only screen and (max-width: 720px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+  }
+}
