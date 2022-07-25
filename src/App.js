@@ -5,7 +5,8 @@ import About from './About';
 import Shop from './Shop';
 import Intro from './Intro';
 import Login from './login';
-import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
+import { MemoryRouter as Router, Switch, Route, Routes } from 'react-router-dom';
+import {Navigate} from "react-router-dom";
 import FeaturedPage from "./components/featuredPage";
 
 function App() { 
@@ -17,6 +18,7 @@ function App() {
       <div className="App">
         <Nav />
           <Routes>
+              <Route exact path="/" element={<Navigate to="/about"/>}/>
               <Route path="/featured-page" element={<FeaturedPage />} />
               <Route path="/about" element={<Intro />} />
               <Route path="/manage-clubs" element={<About />} />
