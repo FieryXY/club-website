@@ -18,7 +18,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(127, 37, 37, 0.9);
+    background: #303841;
     z-index: 3;
     overflow-y: auto;
     cursor: pointer;
@@ -26,8 +26,6 @@
     opacity: 1;
     -webkit-transition: opacity 0.3s 0, visibility 0 0;
     transition: opacity 0.3s 0, visibility 0 0;
-    background: #e8e8e8;
-
   }
   
   .user-modal .user-modal-container {
@@ -39,7 +37,7 @@
     position: relative;
     width: 90%;
     max-width: 600px;
-    background: #FFF;
+    background: white;
     margin: 3em auto 4em;
     cursor: auto;
     border-radius: 0.25em;
@@ -166,7 +164,7 @@
     border-radius: 0.25em;
     padding: 16px 0;
     cursor: pointer;
-    background: #F64747;
+    background: #D72323;
     color: #FFF;
     font-weight: bold;
     border: none;
@@ -284,10 +282,11 @@
     font-size: 14px;
     font-size: 0.875rem;
   }
+
+
   .form-bottom-message a {
-    color: rgb(0, 0, 0);
+    color: white;
     text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, .0);
       padding: 0 0 0 2px;
       -webkit-transition: all 0.30s ease-in-out;
         -moz-transition: all 0.30s ease-in-out;
@@ -297,7 +296,7 @@
   .form-bottom-message a:hover {
       -webkit-animation: borderslide-3px .5s;
               animation: borderslide-3px .5s;
-      border-bottom: 1px solid rgb(0, 0, 0);
+      border-bottom: 1px solid white;
       padding-bottom: 3px;
   }
   

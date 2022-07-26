@@ -12,14 +12,32 @@
   }
   
   nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     width: max(100%, fit-content);
     padding: 20px;
     padding-bottom: 1px;
     height: auto;
-    background-color: rgb(136,12,12);
+    background-color: #3A4750;
+    margin-right: 0;
+    padding-right: 0;
   
     display: block;
     box-sizing: border-box;
+  }
+
+  .nav-title {
+    font-size: 3rem
+  }
+
+  .nav-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    width: 40%;
   }
   
   .link_icon {
@@ -31,18 +49,34 @@
   }
   
   .button {
-    margin-top: 20px;
-    margin-left: 10px;
     padding: 6px;
-    padding-left: 14px;
-    padding-right: 14px;
-    border-radius: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    padding-top: 15px;
+
     
-    background-color: rgb(196,41,50);
+    background-color: #3A4750;
     color: white;
     font-size: 20px;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  .buttonLi {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+    padding-bottom: 0px;
+    padding-bottom: 15px;
+  }
+
+
+
+  .button:hover {
+    background-color: #D72323;
   }
 
   .nav-links {
@@ -50,10 +84,16 @@
     display: flex;
     margin-left: auto;
     margin-right: 0;
+    padding-right: 0;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
     list-style: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    overflow: hidden;
   }
 
 @media only screen and (max-width: 720px) {
@@ -64,5 +104,8 @@
   }
   .nav-links {
     flex-wrap: wrap;
+  }
+  .nav-title {
+    display: none;
   }
 }

@@ -49,14 +49,14 @@ const Login = (props) => {
         <div className="user-modal">
             <div className="user-modal-container">
                 <ul className="switcher">
-                    <li><h3>Sign in</h3></li>
+                    <li><h3 style={{color: "black"}}>Sign in</h3></li>
                 </ul>
 
                 <div id="login">
                     <div className="form">
                         <p className="fieldset">
                             <label className="image-replace email" for="signin-email">E-mail</label>
-                            <input onChange={changeUserName} value={userName} className="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail" />
+                            <input onChange={changeUserName} value={userName} className="full-width has-padding has-border login-input" id="signin-email" type="email" placeholder="E-mail" />
                             <span style={(badLogin === "email") ? makeVisibleCSS : null} className="error-message">An account with this email address does not exist!</span>
                         </p>
 
