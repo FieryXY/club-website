@@ -16,7 +16,7 @@ code {
 .clubIntroductionDiv {
   width: 80%;
   height: auto;
-  background-color: #c7c7c7;
+  background-color: white;
   border-radius: 12px;
   border-style: none;
 
@@ -44,6 +44,7 @@ code {
 
 .clubIntroductionBodyDiv {
   display: block;
+
   width: 60%;
 /*   height: 250px; */
   height: fit-content;
