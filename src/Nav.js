@@ -7,11 +7,11 @@ function Nav() {
     <nav>
         <img src={link} alt="Logo Link" className = "link_icon"/>
         <ul className='nav-links'>
-            <li><a href="/featured-page">Home</a></li>
-            <li><a href="/manage-clubs" class="button">Manage Clubs</a></li>
-            <li><a href="/asb" class="button">ASB</a></li>
-            <li><a href="/about" class="button">About</a></li>
-            <li><a href="/login" class="button">Login</a></li>
+            <li><a href="/featured-page" className="button">Home</a></li>
+            <li><a href="/manage-clubs" className="button">Manage Clubs</a></li>
+            <li><a href="/asb" className="button">ASB</a></li>
+            <li><a href="/about" className="button">About</a></li>
+            <li><a href="/login" className="button">Login</a></li>
         </ul>
     </nav>  
   );
