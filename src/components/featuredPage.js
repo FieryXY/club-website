@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FeaturedClubContent from "./featuredClubContent";
 import "./featuredPage.css";
+import ClubService from './ClubService.js';
 
-function FeaturedPage({ featuredClubs, setFeaturedClubs}) {
-  const [clubIndex, setClubIndex] = useState(0)
+function FeaturedPage() {
+  const [featuredClubs, setFeaturedClubs] = useState(null);
+  const [clubIndex, setClubIndex] = useState(0);
+
+  useEffect(() => {
+      ClubService.getFeaturedClubs()
+
+  }, []);
+
+
+
   function clubContentSlideLeft() {
     var elem = document.getElementById("clubContent");
     elem.classList.remove("slide-in-left");

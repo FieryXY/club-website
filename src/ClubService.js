@@ -14,3 +14,10 @@ const doLogin = (userName, password) => {
         "body" : JSON.stringify(Body)  
     })
 }
+
+const getFeaturedClubs = () => {
+    return fetch(BackEndURL + "/api/club/featured", {
+        "method" : "GET",
+        "mode" : "cors"
+    })
+}
