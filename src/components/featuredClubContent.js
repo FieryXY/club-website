@@ -1,8 +1,6 @@
 import React from "react";
-import { reactLocalStorage } from "reactjs-localstorage";
 
 function FeaturedClubContent({ featuredClubs, setFeaturedClubs, clubIndex}) {
-  console.log({clubIndex});
   return (
     <div>
       <h2>{featuredClubs[clubIndex].name}</h2>
