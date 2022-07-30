@@ -14,6 +14,21 @@ class ClubService {
             "body" : JSON.stringify(Body)  
         })
     }
+    doClubList = () => {
+        return fetch(BackEndURL + "/club/list", {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "GET",
+            "mode" : "cors",  
+        })
+    }
+    doClubTags = () => {
+        return fetch(BackEndURL + "/club/tags/list", {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "GET",
+            "mode" : "cors",  
+        })
+    }
+}
 }
 
 export default new ClubService();
