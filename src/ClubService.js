@@ -1,13 +1,13 @@
-
 const development = true;
-const BackEndURL = "http://localhost:8080/"; 
+const BackEndURL = "http://localhost:8080"; 
+
 class ClubService {
-    doLogin = (userName, password) => {
+    doLogin(userName, password) {
         const Body = {
-            "username" : userName, 
+            "email" : userName, 
             "password" : password
         }; 
-        return fetch(BackEndURL + "login", {
+        return fetch(BackEndURL + "/api/auth/login", {
             "headers":  {"Content-Type" : "application/json"},
             "method" : "POST",
             "mode" : "cors",  
@@ -15,19 +15,20 @@ class ClubService {
         })
     }
     doClubList = () => {
-        return fetch(BackEndURL + "club/list", {
+        return fetch(BackEndURL + "/club/list", {
             "headers":  {"Content-Type" : "application/json"},
             "method" : "GET",
             "mode" : "cors",  
         })
     }
     doClubTags = () => {
-        return fetch(BackEndURL + "club/tags/list", {
+        return fetch(BackEndURL + "/club/tags/list", {
             "headers":  {"Content-Type" : "application/json"},
             "method" : "GET",
             "mode" : "cors",  
         })
     }
+}
 }
 
 export default new ClubService();
