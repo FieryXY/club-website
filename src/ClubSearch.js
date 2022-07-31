@@ -14,8 +14,8 @@ const ClubSearchPage = (props) => {
     const [clubResultList, setClubResultList] = useState([]);
     const [allClubs, setAllClubs] = useState([]);
     
-    
-    useEffect(() => {
+        
+    useEffect(() => {                                                       
         setClubResultList(allClubs.filter(club => clubSearchQuery.split(" ").every(word => club.name.split(" ").includes(word)) 
     && clubTagFilters.every(tag => club.tags.includes(tag))));
     }, [clubSearchQuery, clubTagFilters]);
