@@ -110,6 +110,8 @@
 
   display: none;
   visibility: hidden;
+
+  z-index: 6;
 }
 
 .menuIcon {
@@ -120,6 +122,7 @@
   top: 1.5rem;
   left: 1.5rem;
   transition: 0.5s;
+  
 }
 
 .hamburger {
@@ -182,6 +185,7 @@
   .nav-links {
     position: fixed;
     flex-direction: column;
+    z-index: 5;
     margin: 0;
     padding: 0;
 

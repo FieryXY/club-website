@@ -1,16 +1,42 @@
 import React, { useEffect, useState } from "react";
 import FeaturedClubContent from "./featuredClubContent";
 import "./featuredPage.css";
-import ClubService from './ClubService.js';
+import ClubService from '../ClubService.js';
 
 function FeaturedPage() {
   const [featuredClubs, setFeaturedClubs] = useState(null);
   const [clubIndex, setClubIndex] = useState(0);
 
   useEffect(() => {
-      ClubService.getFeaturedClubs()
 
+    setFeaturedClubs([
+      {
+        "clubId": "1",
+        "clubName": "Club Name",
+        "description": "Description",
+        "mediaURL": ""
+      }
+    ]);
+
+      ClubService.getFeaturedClubs().then(response => {
+
+        console.log(response.status);
+
+        if(response.status != 200) {
+            throw "Backend is Not Responding!"
+        }
+
+        return response.json();
+    }).then(json => {
+          setFeaturedClubs(json);
+      }).catch(exc => {
+        console.log("Request Failed");
+      })
   }, []);
+
+  if(featuredClubs == null) {
+    return (<h1 style={{color:"white", textAlign:"center"}}>Could not Load Featured Clubs</h1>);
+  }
 
 
 
@@ -60,7 +86,7 @@ function FeaturedPage() {
             <FeaturedClubContent featuredClubs={featuredClubs} setFeaturedClubs={setFeaturedClubs} clubIndex={clubIndex}/>
           </div>
           <div id="right-btn" onClick={clubContentSlideLeft} className="featured-club-arrow-side-column right">
-            <div className="featured-club-arrow right"></div>
+            <div className="featured-club-arrow right"> </div>
           </div>
         </div>
       </div>

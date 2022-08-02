@@ -22,15 +22,27 @@ const ClubSearchPage = (props) => {
     
     
     useEffect(() => {
-        ClubService.doClubList().then(response => response.json()).then(json => {
-            setAllClubs(json);
+        ClubService.doClubList().then(response => {
 
+            console.log(response.status);
+    
+            if(response.status != 200) {
+                throw "Backend is Not Responding!"
+            }
+    
+            return response.json();
         }).catch(err => {console.log("backend is not responding")})}, []);
 
     useEffect(() => {
-        ClubService.doClubTags().then(response => response.json()).then(json => {
-            setAllClubTags(json);
+        ClubService.doClubTags().then(response => {
 
+            console.log(response.status);
+    
+            if(response.status != 200) {
+                throw "Backend is Not Responding!"
+            }
+    
+            return response.json();
         }).catch(err => {console.log("backend is not responding")})}, []);
 
     

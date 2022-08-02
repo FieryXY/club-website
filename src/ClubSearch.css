@@ -282,6 +282,10 @@ footer {
     .homebtn {
         width: 180px;
     }
+
+    .tags {
+        margin-bottom: 50px;
+    }
 }
 
 @media (max-width: 768px) {

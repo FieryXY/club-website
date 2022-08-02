@@ -45,8 +45,9 @@ function Nav(props) {
           <img src={srcImg} alt="Logo Link" className = "link_icon"/>
           <p className="nav-title">CCA Club Hub</p>
         </div>
-        <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
+          <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
             <li className="buttonLi"><a onClick={() => navigate("/featured-page")} className="button" unselectable="on">Home</a></li>
+            <li className="buttonLi"><a onClick={() => navigate("/club-search")} className="button" unselectable="on">Search Clubs</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/manage-clubs")} className="button" unselectable="on">Manage Clubs</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/asb")} className="button" unselectable="on">ASB</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/about")} className="button" unselectable="on">About</a></li>

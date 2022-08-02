@@ -9,9 +9,9 @@ function FeaturedClubContent({ featuredClubs, setFeaturedClubs, clubIndex}) {
 
   return (
     <div>
-      <h2 onClick={() => navigate("/club-information/"+featured[clubIndex].clubId)}>{featuredClubs[clubIndex].clubName}</h2>
+      <h2 onClick={() => navigate("/club-information/"+featuredClubs[clubIndex].clubId)}>{featuredClubs[clubIndex].clubName}</h2>
       <div className="featured-club-inner-img-div">
-        <p src={featured[clubIndex].mediaURL}>Image Placeholder</p>
+        <p src={featuredClubs[clubIndex].mediaURL}>Image Placeholder</p>
       </div>
       <div className="featured-club-inner-description-div">
         <p>{featuredClubs[clubIndex].description}</p>
