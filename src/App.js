@@ -15,6 +15,15 @@ import FeaturedPage from "./components/featuredPage";
 function App() { 
 
   const [isLoggedIn, setLoggedIn] = useState(false);
+
+  const logOut = () => {
+    if(localStorage.getItem("accessToken") != null) {
+        localStorage.removeItem("accessToken");
+        setLoggedIn(false);
+    }
+  }
+
+
   return (
     <Router>
       <div className="App">
