@@ -12,6 +12,12 @@ function Nav(props) {
   return (
     <nav>
         <div class="nav-header">
+        <div class="menuIconContainer">
+          <div class="menuIcon"></div>
+          <div class="hamburger"></div>
+          <div class="hamburger2"></div>
+          <div class="hamburger3"></div>
+        </div>
           <img src={srcImg} alt="Logo Link" className = "link_icon"/>
           <p className="nav-title">CCA Club Hub</p>
         </div>

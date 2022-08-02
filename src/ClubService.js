@@ -29,6 +29,5 @@ class ClubService {
         })
     }
 }
-}
 
 export default new ClubService();
