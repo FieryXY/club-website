@@ -7,7 +7,7 @@ import Shop from './Shop';
 import Intro from './Intro';
 import Login from './login';
 import ClubSearchPage from './ClubSearch';
-import { MemoryRouter as Router, Switch, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 import {Navigate} from "react-router-dom";
 import FeaturedPage from "./components/featuredPage";
 

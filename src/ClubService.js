@@ -28,7 +28,6 @@ class ClubService {
             "mode" : "cors",  
         })
     }
-    
     getFeaturedClubs = () => {
     return fetch(BackEndURL + "/api/club/featured", {
         "method" : "GET",
