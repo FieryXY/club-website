@@ -44,6 +44,7 @@ function Nav(props) {
         </div>
           <img src={srcImg} alt="Logo Link" className = "link_icon"/>
           <p className="nav-title">CCA Club Hub</p>
+          <button className = "logOutButton">Log Out</button>
         </div>
           <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
             <li className="buttonLi"><a onClick={() => navigate("/featured-page")} className="button" unselectable="on">Home</a></li>
@@ -51,7 +52,7 @@ function Nav(props) {
             <li className="buttonLi"><a onClick={() => navigate("/manage-clubs")} className="button" unselectable="on">Manage Clubs</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/asb")} className="button" unselectable="on">ASB</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/about")} className="button" unselectable="on">About</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/login")} className="button" unselectable="on">Login</a></li>
+            <li className="buttonLi"><a onClick={() => navigate((props.isLoggedIn) ? "/login" : "/club-editor")} className="button" unselectable="on">Login</a></li>
         </ul>
     </nav>  
   );

@@ -28,13 +28,21 @@ class ClubService {
             "mode" : "cors",  
         })
     }
+    doClubInfo = (clubId) => {
+        return fetch(BackEndURL + "/api/club/information/" + clubId, {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "GET",
+            "mode" : "cors",  
+        })
+    }
     getFeaturedClubs = () => {
-    return fetch(BackEndURL + "/api/club/featured", {
-        "method" : "GET",
-        "mode" : "cors"
-    })
-  }
+        return fetch(BackEndURL + "/api/club/featured", {
+            "method" : "GET",
+            "mode" : "cors"
+        })
+    }
 }
+
 
 export default new ClubService();
 

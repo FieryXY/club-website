@@ -14,8 +14,8 @@ const ClubSearchPage = (props) => {
     const [clubResultList, setClubResultList] = useState([]);
     const [allClubs, setAllClubs] = useState([]);
     
-    
-    useEffect(() => {
+        
+    useEffect(() => {                                                       
         setClubResultList(allClubs.filter(club => clubSearchQuery.split(" ").every(word => club.name.split(" ").includes(word)) 
     && clubTagFilters.every(tag => club.tags.includes(tag))));
     }, [clubSearchQuery, clubTagFilters]);
@@ -25,24 +25,26 @@ const ClubSearchPage = (props) => {
         ClubService.doClubList().then(response => {
 
             console.log(response.status);
-    
+
             if(response.status != 200) {
                 throw "Backend is Not Responding!"
             }
-    
+
             return response.json();
-        }).catch(err => {console.log("backend is not responding")})}, []);
+        }).then(json => {
+            setAllClubs(json);
+        }).catch(err => {console.error("Backend is Not Responding!")})}, []);
 
     useEffect(() => {
         ClubService.doClubTags().then(response => {
 
-            console.log(response.status);
-    
             if(response.status != 200) {
                 throw "Backend is Not Responding!"
             }
-    
+
             return response.json();
+        }).then(json => {
+            setAllClubTags(json);
         }).catch(err => {console.log("backend is not responding")})}, []);
 
     
