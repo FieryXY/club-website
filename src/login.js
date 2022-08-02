@@ -53,21 +53,21 @@ const Login = (props) => {
                 <div id="login">
                     <div className="form">
                         <p className="fieldset">
-                            <label className="image-replace email" for="signin-email">E-mail</label>
+                            <label className="image-replace email" htmlFor="signin-email">E-mail</label>
                             <input onChange={changeUserName} value={userName} className="full-width has-padding has-border login-input" id="signin-email" type="email" placeholder="E-mail" />
                             <span style={(badLogin === "email") ? makeVisibleCSS : null} className="error-message">An account with this email address does not exist!</span>
                         </p>
 
                         <p className="fieldset">
-                            <label className="image-replace password" for="signin-password">Password</label>
+                            <label className="image-replace password" htmlFor="signin-password">Password</label>
                             <input onChange={changePassword} value={password} className="full-width has-padding has-border" id="signin-password" type={passwordShown ? "text" : "password"} placeholder="Password" />
                             <a style={{ userSelect: "none" }} onClick={onToggleShow} className="hide-password">{passwordShown ? "Hide" : "Show"}</a>
                             <span style={(badLogin === "password") ? makeVisibleCSS : null} className="error-message">Wrong password! Try again.</span>
                         </p>
 
-                        <p className="fieldset">
+                        <div className="fieldset">
                             <div onClick={onLogin} className="full-width submit">Login</div>
-                        </p>
+                        </div>
                     </div>
 
                     <p className="form-bottom-message" ><a href="#0">Forgot your password?</a></p>

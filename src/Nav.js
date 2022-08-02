@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import './App.css';
 import './Nav.css';
 import srcImg from './img/link.png';
@@ -9,24 +9,48 @@ function Nav(props) {
 
   let navigate = useNavigate();
 
+  const [displayMobileNav, setDisplayMobileNav] = useState(false);
+
+  const handleHamburgerClick = (e) => {
+    setDisplayMobileNav(!displayMobileNav);
+  }
+
+
+  const onResize = () => {
+    console.log("Hi")
+    if(window.innerWidth > 900) {
+      setDisplayMobileNav(false);
+    }
+  }
+
+  
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize)
+
+    return () => {window.removeEventListener('resize', onResize)};
+  }, []);
+
+
+
   return (
     <nav>
-        <div class="nav-header">
-        <div class="menuIconContainer">
-          <div class="menuIcon"></div>
-          <div class="hamburger"></div>
-          <div class="hamburger2"></div>
-          <div class="hamburger3"></div>
+        <div className="nav-header">
+        <div className="menuIconContainer" onClick={handleHamburgerClick}>
+          <div className="menuIcon" onClick={handleHamburgerClick}></div>
+          <div className="hamburger" onClick={handleHamburgerClick}></div>
+          <div className="hamburger2" onClick={handleHamburgerClick}></div>
+          <div className="hamburger3" onClick={handleHamburgerClick}></div>
         </div>
           <img src={srcImg} alt="Logo Link" className = "link_icon"/>
           <p className="nav-title">CCA Club Hub</p>
         </div>
-        <ul className='nav-links'>
-            <li className="buttonLi"><a onClick={() => navigate("/featured-page")} class="button" unselectable="on">Home</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/manage-clubs")} class="button" unselectable="on">Manage Clubs</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/asb")} class="button" unselectable="on">ASB</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/about")} class="button" unselectable="on">About</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/login")} class="button" unselectable="on">Login</a></li>
+        <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
+            <li className="buttonLi"><a onClick={() => navigate("/featured-page")} className="button" unselectable="on">Home</a></li>
+            <li className="buttonLi"><a onClick={() => navigate("/manage-clubs")} className="button" unselectable="on">Manage Clubs</a></li>
+            <li className="buttonLi"><a onClick={() => navigate("/asb")} className="button" unselectable="on">ASB</a></li>
+            <li className="buttonLi"><a onClick={() => navigate("/about")} className="button" unselectable="on">About</a></li>
+            <li className="buttonLi"><a onClick={() => navigate("/login")} className="button" unselectable="on">Login</a></li>
         </ul>
     </nav>  
   );
