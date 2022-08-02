@@ -33,7 +33,6 @@ const ClubSearchPage = (props) => {
             return response.json();
         }).then(json => {
             setAllClubs(json);
-
         }).catch(err => {console.error("Backend is Not Responding!")})}, []);
 
     useEffect(() => {
@@ -46,7 +45,6 @@ const ClubSearchPage = (props) => {
             return response.json();
         }).then(json => {
             setAllClubTags(json);
-
         }).catch(err => {console.log("backend is not responding")})}, []);
 
     
