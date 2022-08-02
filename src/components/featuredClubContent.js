@@ -1,9 +1,11 @@
 import React from "react";
+import "../featured-clubs.css";
 import {useNavigate} from "react-router-dom";
 
 function FeaturedClubContent({ featuredClubs, setFeaturedClubs, clubIndex}) {
 
   let navigate = useNavigate();
+
 
   return (
     <div>
