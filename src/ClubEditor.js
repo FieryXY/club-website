@@ -10,7 +10,7 @@ const ClubEditor = () => {
     const [clubInfo, setClubInfo] = useState(null);
     const [clubName, setClubName] = useState("");
     const [clubDescription, setClubDescription] = useState("");
-    const [clubPfpUrl, setClubPfpUrl] = useState("");
+    const [clubPfp, setClubPfp] = useState("");
     const [clubSocials, setClubSocials] = useState([]);
     const [clubTags, setClubTags] = useState([]);
 
@@ -31,7 +31,7 @@ const ClubEditor = () => {
             setClubInfo(json);
             setClubName(json["clubName"]);
             setClubDescription(json["description"]);
-            setClubPfpUrl(json["profilePictureUrl"]);
+            setClubPfp(json["profilePictureUrl"]);
             setClubSocials(json["clubSocialDOS"]);
             setClubTags(json["clubCategories"]);
         }).catch(err => {console.log("backend is not responding")})
@@ -44,13 +44,13 @@ const ClubEditor = () => {
         <h1 className="clubProfileTitle"> Can Not Load Club Information </h1>
       );
     }
-    if(clubPfpUrl === null) setClubPfpUrl("./img/ccalogo.png");
+    if(clubPfp === null) setClubPfp("./img/ccalogo.png");
     
     return(
     <>
     <div className="twoColumnContainer">
         <div className="twoColumnElement verticalCenter">
-                <ClubEditorPfp setRefresh = {setRefresh} />
+                <ClubEditorPfp setRefresh = {setRefresh} clubPfp = {clubPfp} setClubPfp = {setClubPfp}/>
                 {/*MAKE CSS FOR MODAL LOL */}
                 <ClubEditorSocials clubSocials = {clubSocials} setClubSocials = {setClubSocials} setRefresh = {setRefresh}/>
         </div>

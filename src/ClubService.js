@@ -92,14 +92,13 @@ class ClubService {
         })
     }
     doChangeImage = (img) => {
-        const Body = {
-            
-        }; 
+        var data = new FormData();
+        var imagedata = document.querySelector('input[type="file"]').files[0];
+        data.append("pfp", imagedata);
         return fetch(BackEndURL + "/api/file/upload/pfp/" + sessionStorage.getItem("clubId"), {
-            "headers":  {"Content-Type" : "multipart/form-data", "Authorization" : sessionStorage.getItem("accessToken")},
             "method" : "POST",
             "mode" : "cors",  
-            "body" : data,
+            body: data
             // "type" : "formData" <--use if breaks
         })
     }
