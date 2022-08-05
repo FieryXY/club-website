@@ -1,7 +1,6 @@
 import React, {useParams, useState} from 'react';
-import { isCompositeComponent } from 'react-dom/test-utils';
 import "./ClubProfile.css";
-import googleclassroom from  './img/googleclassroomlogo.png';
+import googleclassroom from './img/googleclassroomlogo.png';
 import 'antd/dist/antd.css';
 import Login from './login.js'; 
 import {
@@ -25,12 +24,14 @@ const ClubProfileDescription = (props) => {
         if(social["socialName"] = "Classroom") classroom = social["socialLink"];
         if(social["socialName"] = "Other") other = social["socialLink"];
     }
+  
+
 
 return (
     <>
 <div className="twoColumnContainer">
         <div className="twoColumnElement verticalCenter">
-                <img className="clubProfilePicture" src = {props.clubInfo["profilePictureUrl"]}/>
+                <img className="clubProfilePicture" src = {(props.clubInfo["profilePictureUrl"] === null) ? "./img/ccalogo.png" : props.clubInfo["profilePictureUrl"]}/>
             <div className="linkShelf">
                 <a className= {(clubwebsite === null) ? "socialnull" : "social"}><IdcardOutlined style= {{color: '#FFFFFF'}} href = {clubwebsite}/></a>
                 <a className={(instagram === null) ? "socialnull" : "social"}><InstagramOutlined style= {{color: '#FFFFFF'}} href = {instagram}/></a> 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import './Nav.css';
-import srcImg from './img/link.png';
+
 
 import {useNavigate} from "react-router-dom";
 
@@ -12,7 +12,7 @@ function Nav(props) {
   return (
     <nav>
         <div className="nav-header">
-          <img src={srcImg} alt="Logo Link" className = "link_icon"/>
+          <img src = {require("./img/link.png")} alt="Logo Link" className = "link_icon"/>
           <p className="nav-title">CCA Club Hub</p>
           <button className = "logOutButton">Log Out</button>
         </div>
@@ -22,7 +22,7 @@ function Nav(props) {
             <li className="buttonLi"><a onClick={() => navigate("/asb")} className="button" unselectable="on">ASB</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/about")} className="button" unselectable="on">About</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/club-search")} className="button" unselectable="on">Search</a></li>
-            <li className="buttonLi"><a onClick={() => navigate((props.isLoggedIn) ? "/login" : "/club-editor")} className="button" unselectable="on">Login</a></li>
+            <li className="buttonLi"><a onClick={() => navigate((props.isLoggedIn) ? "/club-editor" : "/login")} className="button" unselectable="on">{(props.isLoggedIn) ? "Club Editor" : "Login"}</a></li>
         </ul>
     </nav>  
   );

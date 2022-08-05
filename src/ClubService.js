@@ -1,10 +1,10 @@
 const development = true;
-const BackEndURL = "http://localhost:8080"; 
+const BackEndURL = "https://cca-club-service.herokuapp.com"; 
 
 class ClubService {
     doLogin(userName, password) {
         const Body = {
-            "email" : userName, 
+            "username" : userName, 
             "password" : password
         }; 
         return fetch(BackEndURL + "/api/auth/login", {
@@ -15,14 +15,14 @@ class ClubService {
         })
     }
     doClubList = () => {
-        return fetch(BackEndURL + "/club/list", {
+        return fetch(BackEndURL + "/api/club/list", {
             "headers":  {"Content-Type" : "application/json"},
             "method" : "GET",
             "mode" : "cors",  
         })
     }
     doClubTags = () => {
-        return fetch(BackEndURL + "/club/tags/list", {
+        return fetch(BackEndURL + "/api/club/tags/list", {
             "headers":  {"Content-Type" : "application/json"},
             "method" : "GET",
             "mode" : "cors",  
@@ -30,12 +30,82 @@ class ClubService {
     }
     doClubInfo = (clubId) => {
         return fetch(BackEndURL + "/api/club/information/" + clubId, {
-            "headers":  {"Content-Type" : "application/json"},
             "method" : "GET",
             "mode" : "cors",  
         })
     }
+    doClubDescriptionChange = (clubDescription) => {
+        const Body = {
+            "description" : clubDescription
+        }; 
+        return fetch(BackEndURL + "/api/club/edit/description/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Content-Type" : "application/json", "Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",  
+            "body" : JSON.stringify(Body)  
+        })
+    }
+    doRemoveTag = (clubTags) => {
+        const Body = {
+            "categoryName" : clubTags
+        }; 
+        return fetch(BackEndURL + "/api/club/edit/tags/remove/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Content-Type" : "application/json", "Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",  
+            "body" : JSON.stringify(Body)  
+        })
+    }
+    doAddTag = (clubTags) => {
+        const Body = {
+            "categoryName" : clubTags
+        }; 
+        return fetch(BackEndURL + "/api/club/edit/tags/add/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Content-Type" : "application/json", "Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",  
+            "body" : JSON.stringify(Body)  
+        })
+    }
+    doAddSocials = (name, link) => {
+        const Body = {
+            "socialName" : name,
+            "socialLink" : link
+        }; 
+        return fetch(BackEndURL + "/api/club/edit/socials/add/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Content-Type" : "application/json", "Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",  
+            "body" : JSON.stringify(Body)  
+        })
+    }
+    doRemoveSocials = (name, link) => {
+        const Body = {
+            "socialName" : name,
+            "socialLink" : link
+        }; 
+        return fetch(BackEndURL + "/api/club/edit/socials/remove/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Content-Type" : "application/json", "Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",  
+            "body" : JSON.stringify(Body)  
+        })
+    }
+    doChangeImage = (img) => {
+        const Body = {
+            
+        }; 
+        return fetch(BackEndURL + "/api/file/upload/pfp/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Content-Type" : "multipart/form-data", "Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",  
+            "body" : data,
+            // "type" : "formData" <--use if breaks
+        })
+    }
+
 }
+
 
 
 export default new ClubService();
