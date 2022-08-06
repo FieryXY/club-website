@@ -72,7 +72,7 @@ hr {
     border: none;
 }
 
-input[type=text] {
+.searchBar {
     width: 80%;
     padding: 12px 20px;
     margin: 15px 10%;

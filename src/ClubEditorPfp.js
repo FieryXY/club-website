@@ -3,13 +3,19 @@ import "./ClubEditor.css";
 import Modal from 'react-modal';
 import PfpModal from './PfpModal';
 import ClubService from './ClubService';
+import {Buffer} from 'buffer';
 
 const ClubEditorPfp = (props) => {
-    const [tempPfp, setTempPfp] = useState(null)
     const [pfpSelectorOpen, setPfpSelectorOpen] = useState(false);
     
-    const handleFile = (e) => {
-        ClubService.doChangeImage(e.target.value).then(response => {props.setRefresh(true)});
+    const base64ToBlob = (base64) => {
+        let bytes = new Uint8Array(Buffer.from(base64.split(',')[1], 'base64'));
+        return new Blob([bytes], {type: base64.split(';')[0].split(':')[1]});
+    }
+
+
+    const handleFile = (blob) => {
+        ClubService.doChangeImage(blob).then(response => {props.setRefresh(true)});
         setPfpSelectorOpen(false);
     }
     
@@ -17,9 +23,9 @@ const ClubEditorPfp = (props) => {
         <>
         <img className="clubProfilePicture" src = {props.clubPfp} onClick = {() => setPfpSelectorOpen(true)}/>
         <Modal style = {{content: {"background" : "#3A4750", "overflow" : "scroll", "borderRadius" : "25px"}}} isOpen={pfpSelectorOpen} onRequestClose = {() => {setPfpSelectorOpen(false)}}>
-            <PfpModal onFileSelectSuccess={(file) => setTempPfp(file)}
+            <PfpModal
             onFileSelectError={({ error }) => alert(error)} 
-            tempPfp = {tempPfp} setTempPfp = {setTempPfp} setRefresh = {props.setRefresh}
+             setRefresh = {props.setRefresh}
             setPfpSelectorOpen = {setPfpSelectorOpen} handleFile = {handleFile}/>
         </Modal>
         </> 

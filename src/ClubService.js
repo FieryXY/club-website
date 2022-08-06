@@ -91,18 +91,19 @@ class ClubService {
             "body" : JSON.stringify(Body)  
         })
     }
-    doChangeImage = (img) => {
-        var data = new FormData();
-        var imagedata = document.querySelector('input[type="file"]').files[0];
-        data.append("pfp", imagedata);
-        return fetch(BackEndURL + "/api/file/upload/pfp/" + sessionStorage.getItem("clubId"), {
-            "method" : "POST",
-            "mode" : "cors",  
-            body: data
-            // "type" : "formData" <--use if breaks
-        })
-    }
+    doChangeImage = (blob) => {
 
+        let data = new FormData();
+        let file = new File([blob], "image.png", {type: "image/png"});
+        data.append("pfp", file);
+
+        return fetch(BackEndURL + "/api/file/upload/pfp/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",
+            body: data
+        })
+ }
 }
 
 
