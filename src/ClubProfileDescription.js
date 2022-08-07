@@ -12,6 +12,19 @@ import {
 
 const ClubProfileDescription = (props) => {
 
+    const formatURL = (url) => {
+
+        if (url === null) {
+            return null;
+        }
+
+        if(!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "http://" + url;
+        }
+        return url;
+    }
+
+
     if(props.clubInfo == null) {
         return (
             <h1 className="clubProfileTitle" style={{textAlign: "center"}}>Unable to Load Club Profile for this Club</h1>
@@ -44,12 +57,12 @@ return (
                 <img className="clubProfilePicture" src = {(props.clubInfo["profilePictureUrl"] === null) ? require("./img/ccalogo.png") : props.clubInfo["profilePictureUrl"]}/>
             </div>
             <div className="linkShelf">
-                <a className= {(clubwebsite === null) ? "socialnull" : "social"}><IdcardOutlined style= {{color: '#FFFFFF'}} href = {clubwebsite}/></a>
-                <a className={(instagram === null) ? "socialnull" : "social"}><InstagramOutlined style= {{color: '#FFFFFF'}} href = {instagram}/></a> 
+                <a className= {(clubwebsite === null) ? "socialnull" : "social"}><IdcardOutlined style= {{color: '#FFFFFF'}} href = {formatURL(clubwebsite)}/></a>
+                <a className={(instagram === null) ? "socialnull" : "social"}><InstagramOutlined style= {{color: '#FFFFFF'}} href = {formatURL(instagram)}/></a> 
                 <a className={(email === null) ? "socialnull" : "social"}><MailOutlined style= {{color: '#FFFFFF'}} href = {email}/></a>
-                <a className = {(classroom == null) ? "socialnull" : "social"} href = {classroom}><img style={{height: "85%"}} src = {googleclassroom}/></a>
+                <a className = {(classroom == null) ? "socialnull" : "social"} href = {formatURL(classroom)} target="_blank"><img style={{height: "85%"}} src = {googleclassroom}/></a>
 
-                <a className = {(other == null) ? "socialnull" : "social"}><LinkOutlined style= {{color: '#FFFFFF'}} href = {other}/></a>
+                <a className = {(other == null) ? "socialnull" : "social"}><LinkOutlined style= {{color: '#FFFFFF'}} href = {formatURL(other)}/></a>
             </div>
         </div>
         <div className="twoColumnElement" style={{flexGrow:"2"}}>

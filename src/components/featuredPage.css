@@ -13,6 +13,19 @@
   flex: 1;
 }
 
+.featured-club-title {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.featured-club-img {
+  object-fit: fill;
+}
+
+.featured-club-title:hover {
+  color: #D72323;
+}
+
 .featured-clubs-container {
   margin-left: 20%;
   margin-right: 20%;
@@ -122,8 +135,12 @@
   margin: 0 auto;
   margin-top: 10px;
   height: 300px;
-  background-color: #303841;
+  background-color: white;
   color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .featured-club-inner-description-div {

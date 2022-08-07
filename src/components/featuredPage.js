@@ -30,7 +30,7 @@ function FeaturedPage() {
     }).then(json => {
           setFeaturedClubs(json);
       }).catch(exc => {
-        console.log("Request Failed");
+        alert("Request Failed");
       })
   }, []);
 
