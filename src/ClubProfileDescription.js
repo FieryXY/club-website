@@ -31,12 +31,14 @@ return (
     <>
 <div className="twoColumnContainer">
         <div className="twoColumnElement verticalCenter">
+            <div style={{position: "relative", width:"50%"}}>
                 <img className="clubProfilePicture" src = {(props.clubInfo["profilePictureUrl"] === null) ? "./img/ccalogo.png" : props.clubInfo["profilePictureUrl"]}/>
+            </div>
             <div className="linkShelf">
                 <a className= {(clubwebsite === null) ? "socialnull" : "social"}><IdcardOutlined style= {{color: '#FFFFFF'}} href = {clubwebsite}/></a>
                 <a className={(instagram === null) ? "socialnull" : "social"}><InstagramOutlined style= {{color: '#FFFFFF'}} href = {instagram}/></a> 
                 <a className={(email === null) ? "socialnull" : "social"}><MailOutlined style= {{color: '#FFFFFF'}} href = {email}/></a>
-                <a className = {(classroom == null) ? "socialnull" : "social"} href = {classroom}><img className = "social" src = {googleclassroom}/></a>
+                <a className = {(classroom == null) ? "socialnull" : "social"} href = {classroom}><img style={{height: "85%"}} src = {googleclassroom}/></a>
                 <a className = {(other == null) ? "socialnull" : "social"}><LinkOutlined style= {{color: '#FFFFFF'}} href = {other}/></a>
             </div>
         </div>

@@ -19,9 +19,18 @@ const ClubEditorPfp = (props) => {
         setPfpSelectorOpen(false);
     }
     
+    
     return(
         <>
-        <img className="clubProfilePicture" src = {props.clubPfp} onClick = {() => setPfpSelectorOpen(true)}/>
+
+        <div style={{position: "relative", width:"50%"}}>
+        <img className="clubProfilePicture" src = {(props.clubPfp == null) ? require("./img/ccalogo.png") : props.clubPfp} onClick = {() => {
+                setPfpSelectorOpen(true);
+        }} />
+           <div class="editOverlay" onClick = {() => {
+                setPfpSelectorOpen(true);
+        }}>Edit</div>
+        </div>
         <Modal style = {{content: {"background" : "#3A4750", "overflow" : "scroll", "borderRadius" : "25px"}}} isOpen={pfpSelectorOpen} onRequestClose = {() => {setPfpSelectorOpen(false)}}>
             <PfpModal
             onFileSelectError={({ error }) => alert(error)} 
