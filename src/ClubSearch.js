@@ -6,48 +6,60 @@ import ClubTagBox from "./ClubTagBox.js";
 import ClubResults from "./ClubResults.js";
 import ClubService from './ClubService.js';
 
-const ClubSearchPage = (props) => {
+const ClubSearchPage = () => {
     
     const [clubSearchQuery, setClubSearchQuery] = useState("");
     const [allClubTags, setAllClubTags] = useState([]);
     const [clubTagFilters, setClubTagFilters] = useState([]);
     const [clubResultList, setClubResultList] = useState([]);
     const [allClubs, setAllClubs] = useState([]);
-    
-        
-    useEffect(() => {                                                       
-        setClubResultList(allClubs.filter(club => clubSearchQuery.split(" ").every(word => club.name.split(" ").includes(word)) 
-    && clubTagFilters.every(tag => club.tags.includes(tag))));
-    }, [clubSearchQuery, clubTagFilters]);
-    
+
+    const filterClubs = () => {
+        let filteredClubs = allClubs;
+        if(clubTagFilters.length > 0) {
+            filteredClubs = filteredClubs.filter(club => {
+                return clubTagFilters.every(tag => club["clubCategories"].includes(tag));
+            });
+        }
+        if(clubSearchQuery !== "") {
+            filteredClubs = filteredClubs.filter(club => {
+                return club["clubName"].toLowerCase().includes(clubSearchQuery.toLowerCase());
+            });
+        }
+        setClubResultList(filteredClubs);
+    }    
     
     useEffect(() => {
         ClubService.doClubList().then(response => {
-
-            console.log(response.status);
-
-            if(response.status != 200) {
-                throw "Backend is Not Responding!"
+            if(response["status"] != 200) {
+                throw "Backend is not responding"
             }
-
             return response.json();
         }).then(json => {
             setAllClubs(json);
-        }).catch(err => {console.error("Backend is Not Responding!")})}, []);
+            filterClubs();
+        }).catch(err => {console.log("backend is not responding")})    
+    }, []);
 
     useEffect(() => {
         ClubService.doClubTags().then(response => {
-
-            if(response.status != 200) {
-                throw "Backend is Not Responding!"
+            if(response["status"] != 200) {
+                throw "Backend is not responding"
             }
-
             return response.json();
         }).then(json => {
             setAllClubTags(json);
         }).catch(err => {console.log("backend is not responding")})}, []);
 
-    
+        useEffect(() => {
+            filterClubs();
+        }, [allClubs]);
+
+        useEffect(() => {
+            filterClubs();
+        }, [clubSearchQuery, clubTagFilters]);
+
+
     return (
         <>
         
@@ -67,7 +79,7 @@ const ClubSearchPage = (props) => {
         </div>
         
       </>
-        );
+    );
 }
 
 export default ClubSearchPage;

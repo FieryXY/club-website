@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { render } from 'react-dom';
 import "./login.css" 
 import ClubService from './ClubService.js';
+import {useNavigate} from "react-router-dom";
 const Login = (props) => {
 
     const [userName, setUserName] = useState(""); 
     const [password, setPassword] = useState(""); 
     const [badLogin, setBadLogin] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
+    let navigate = useNavigate();
 
     const makeVisibleCSS = {
         opacity: 1,
@@ -18,9 +20,15 @@ const Login = (props) => {
     }
     const changePassword = (e) => {
         setPassword(e.target.value);
-    }
+    }   
 
-
+    const handleKeyPress = (e) => {
+        
+      if (e.key === 'Enter') {
+       onLogin();
+       e.preventDefault();
+      }
+    };
    
 
 
@@ -33,9 +41,10 @@ const Login = (props) => {
               }
                return;
             }
-              localStorage.setItem("accessToken", json["jwt-token"]);
+              sessionStorage.setItem("accessToken", json["jwtToken"]);
+              sessionStorage.setItem("clubId", json["clubId"]);
               props.setLoggedIn(true);
-              //redirect to designated club description page
+              navigate("/club-editor");
       })
     }
 
@@ -52,18 +61,18 @@ const Login = (props) => {
 
                 <div id="login">
                     <div className="form">
-                        <p className="fieldset">
+                        <div className="fieldset">
                             <label className="image-replace email" htmlFor="signin-email">E-mail</label>
-                            <input onChange={changeUserName} value={userName} className="full-width has-padding has-border login-input" id="signin-email" type="email" placeholder="E-mail" />
-                            <span style={(badLogin === "email") ? makeVisibleCSS : null} className="error-message">An account with this email address does not exist!</span>
-                        </p>
+                            <input onKeyPress = {handleKeyPress} onChange={changeUserName} value={userName} className="full-width has-padding has-border login-input" id="signin-email" type="email" placeholder="E-mail" />
+                            <span style={(badLogin === "email") ? makeVisibleCSS : null} className="error-message">An account with this username does not exist!</span>
+                        </div>
 
-                        <p className="fieldset">
+                        <div className="fieldset">
                             <label className="image-replace password" htmlFor="signin-password">Password</label>
-                            <input onChange={changePassword} value={password} className="full-width has-padding has-border" id="signin-password" type={passwordShown ? "text" : "password"} placeholder="Password" />
+                            <input onKeyPress = {handleKeyPress} onChange={changePassword} value={password} className="full-width has-padding has-border" id="signin-password" type={passwordShown ? "text" : "password"} placeholder="Password" />
                             <a style={{ userSelect: "none" }} onClick={onToggleShow} className="hide-password">{passwordShown ? "Hide" : "Show"}</a>
                             <span style={(badLogin === "password") ? makeVisibleCSS : null} className="error-message">Wrong password! Try again.</span>
-                        </p>
+                        </div>
 
                         <div className="fieldset">
                             <div onClick={onLogin} className="full-width submit">Login</div>
