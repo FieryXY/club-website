@@ -41,7 +41,7 @@ return (
 <div className="twoColumnContainer">
         <div className="twoColumnElement verticalCenter">
             <div style={{position: "relative", width:"50%"}}>
-                <img className="clubProfilePicture" src = {(props.clubInfo["profilePictureUrl"] === null) ? "./img/ccalogo.png" : props.clubInfo["profilePictureUrl"]}/>
+                <img className="clubProfilePicture" src = {(props.clubInfo["profilePictureUrl"] === null) ? require("./img/ccalogo.png") : props.clubInfo["profilePictureUrl"]}/>
             </div>
             <div className="linkShelf">
                 <a className= {(clubwebsite === null) ? "socialnull" : "social"}><IdcardOutlined style= {{color: '#FFFFFF'}} href = {clubwebsite}/></a>
