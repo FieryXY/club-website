@@ -11,20 +11,29 @@ import {
         } from "@ant-design/icons";
 
 const ClubProfileDescription = (props) => {
-    let socials = props.clubInfo["clubSocialDOS"];
-    let clubwebsite = null; 
-    let instagram = null;
-    let email = null;
-    let classroom = null;
-    let other = null;
-    for(const social of socials) {
-        if(social["socialName"] = "Club Website") clubwebsite = social["socialLink"];
-        if(social["socialName"] = "Instagram") instagram = social["socialLink"];
-        if(social["socialName"] = "Email") email = "mailto:" + social["socialLink"];
-        if(social["socialName"] = "Classroom") classroom = social["socialLink"];
-        if(social["socialName"] = "Other") other = social["socialLink"];
+
+    if(props.clubInfo == null) {
+        return (
+            <h1 className="clubProfileTitle" style={{textAlign: "center"}}>Unable to Load Club Profile for this Club</h1>
+        );
     }
   
+
+
+        let socials = props.clubInfo["clubSocialDOS"];
+        let clubwebsite = null; 
+        let instagram = null;
+        let email = null;
+        let classroom = null;
+        let other = null;
+        for(const social of socials) {
+            if(social["socialName"] == "Club Website") clubwebsite = social["socialLink"];
+            if(social["socialName"] == "Instagram") instagram = social["socialLink"];
+            if(social["socialName"] == "Email") email = "mailto:" + social["socialLink"];
+            if(social["socialName"] == "Classroom") classroom = social["socialLink"];
+            if(social["socialName"] == "Other") other = social["socialLink"];
+        }
+    
 
 
 return (
@@ -39,6 +48,7 @@ return (
                 <a className={(instagram === null) ? "socialnull" : "social"}><InstagramOutlined style= {{color: '#FFFFFF'}} href = {instagram}/></a> 
                 <a className={(email === null) ? "socialnull" : "social"}><MailOutlined style= {{color: '#FFFFFF'}} href = {email}/></a>
                 <a className = {(classroom == null) ? "socialnull" : "social"} href = {classroom}><img style={{height: "85%"}} src = {googleclassroom}/></a>
+
                 <a className = {(other == null) ? "socialnull" : "social"}><LinkOutlined style= {{color: '#FFFFFF'}} href = {other}/></a>
             </div>
         </div>

@@ -34,6 +34,14 @@ class ClubService {
             "mode" : "cors",  
         })
     }
+
+    getFeaturedClubs = () => {
+        return fetch(BackEndURL + "/api/club/featured", {
+            "method" : "GET",
+            "mode" : "cors"
+        })
+    }
+
     doClubDescriptionChange = (clubDescription) => {
         const Body = {
             "description" : clubDescription
@@ -109,3 +117,4 @@ class ClubService {
 
 
 export default new ClubService();
+

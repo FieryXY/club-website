@@ -18,12 +18,19 @@ Modal.setAppElement("#root");
 function App() { 
   
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const logOut = () => {
+    if(localStorage.getItem("accessToken") != null) {
+        localStorage.removeItem("accessToken");
+        setLoggedIn(false);
+    }
+  }
 
   useEffect(() => {
     if(!isLoggedIn && sessionStorage.getItem("accessToken") != null) {
       setLoggedIn(true)
     }
   }, []);
+
   return (
     <Router>
       <div className="App">
