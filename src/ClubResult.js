@@ -11,8 +11,9 @@ const ClubResult = (props) => {
 
     return (
         <>
+        <div className="clubResult">
         <div className = "logo">
-            <img src = {props.clubJSON["profilePictureUrl"]} alt= {"Club picture of " + props.clubJSON["clubName"]}/>
+            <img className="clubSearchImage" src = {(props.clubJSON["profilePictureUrl"] == null) ? require("./img/ccalogo.png") : props.clubJSON["profilePictureUrl"]} alt= {"Club picture of " + props.clubJSON["clubName"]}/>
          </div>
             <div className = "clubListText">
                 <a onClick = {nav}  className="writeupTitle clubSearchPageA">{props.clubJSON["clubName"]}</a>
@@ -22,6 +23,9 @@ const ClubResult = (props) => {
                 )}
             </div>
         </div>
-        </>
+    </div>
+    <hr></hr>
+    </>
+    
 )}
 export default ClubResult;
