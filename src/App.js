@@ -9,7 +9,7 @@ import Login from './login';
 import ClubProfile from './ClubProfile';
 import ClubSearchPage from './ClubSearch';
 import ClubEditor from './ClubEditor';
-import { MemoryRouter as Router, Switch, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 import {Navigate} from "react-router-dom";
 import FeaturedPage from "./components/featuredPage";
 import Modal from 'react-modal';
@@ -18,12 +18,19 @@ Modal.setAppElement("#root");
 function App() { 
   
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const logOut = () => {
+    if(localStorage.getItem("accessToken") != null) {
+        localStorage.removeItem("accessToken");
+        setLoggedIn(false);
+    }
+  }
 
   useEffect(() => {
     if(!isLoggedIn && sessionStorage.getItem("accessToken") != null) {
       setLoggedIn(true)
     }
   }, []);
+
   return (
     <Router>
       <div className="App">

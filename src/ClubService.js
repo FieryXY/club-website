@@ -1,5 +1,5 @@
 const development = true;
-const BackEndURL = "https://cca-club-service.herokuapp.com"; 
+const BackEndURL = "http://localhost:8080"; 
 
 class ClubService {
     doLogin(userName, password) {
@@ -11,7 +11,7 @@ class ClubService {
             "headers":  {"Content-Type" : "application/json"},
             "method" : "POST",
             "mode" : "cors",  
-            "body" : JSON.stringify(Body)  
+            "body" : JSON.stringify(Body)
         })
     }
     doClubList = () => {
@@ -34,6 +34,14 @@ class ClubService {
             "mode" : "cors",  
         })
     }
+
+    getFeaturedClubs = () => {
+        return fetch(BackEndURL + "/api/club/featured", {
+            "method" : "GET",
+            "mode" : "cors"
+        })
+    }
+
     doClubDescriptionChange = (clubDescription) => {
         const Body = {
             "description" : clubDescription
@@ -91,20 +99,22 @@ class ClubService {
             "body" : JSON.stringify(Body)  
         })
     }
-    doChangeImage = (img) => {
-        var data = new FormData();
-        var imagedata = document.querySelector('input[type="file"]').files[0];
-        data.append("pfp", imagedata);
-        return fetch(BackEndURL + "/api/file/upload/pfp/" + sessionStorage.getItem("clubId"), {
-            "method" : "POST",
-            "mode" : "cors",  
-            body: data
-            // "type" : "formData" <--use if breaks
-        })
-    }
+    doChangeImage = (blob) => {
 
+        let data = new FormData();
+        let file = new File([blob], "image.png", {type: "image/png"});
+        data.append("pfp", file);
+
+        return fetch(BackEndURL + "/api/file/upload/pfp/" + sessionStorage.getItem("clubId"), {
+            "headers":  {"Authorization" : sessionStorage.getItem("accessToken")},
+            "method" : "POST",
+            "mode" : "cors",
+            body: data
+        })
+ }
 }
 
 
 
 export default new ClubService();
+

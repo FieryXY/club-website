@@ -1,7 +1,9 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import ReactCrop, {centerCrop, makeAspectCrop} from 'react-image-crop';
 
+
+const storageSideLength = 200;
 
 const PfpModal = (props) => {
     const fileInput = useRef(null);
@@ -11,19 +13,45 @@ const PfpModal = (props) => {
         unit: '%',
         width: 50,
         height: 50,
-
+        x: 25,
+        y: 25
     });
+    const [showImageLoading, setShowImageLoading] = useState(false);
+
+
+    const createImageFromCrop = () => {
+      let canvas = document.getElementById("invisible-canvas")
+      let ctx = canvas.getContext("2d")
+      canvas.width = storageSideLength;
+      canvas.height = storageSideLength;
+      let imageObj = new Image();
+      imageObj.src = image;
+
+      let cropX = crop.x * imageObj.width / 100;
+            let cropY = crop.y * imageObj.height / 100;
+            let cropWidth = crop.width * imageObj.width / 100;
+            let cropHeight = crop.height * imageObj.height / 100;
+
+      ctx.drawImage(imageObj, cropX, cropY, cropWidth, cropHeight, 0, 0, storageSideLength, storageSideLength);
+
+      canvas.toBlob((blob) => {
+        props.handleFile(blob);
+      });
+    }
+
     function onImageLoad(e) {
         const { naturalWidth: width, naturalHeight: height } = e.currentTarget;
       
         const crop = centerCrop(
           makeAspectCrop(
-            {
-                unit: '%',
-                width: 50,
-                height: 50,
+            (width < height) ? {
+              unit: '%',
+              width: 100    
+            } : {
+              unit: '%',
+              height: 100
             },
-            16 / 9,
+            1,
             width,
             height
           ),
@@ -36,35 +64,40 @@ const PfpModal = (props) => {
 
     const handleFileInput = (e) => {
         const file = e.target.files[0];
+        setShowImageLoading(false);
         if(file == null) return;
         //change this back later
-        if (file.size < 2048)
+        if (file.size < 2048) {
           props.onFileSelectError({ error: "File size cannot exceed more than 2MB" });
-        else props.onFileSelectSuccess(file);
+          return;
+        }
         if (e.target.files && e.target.files[0]) {
-            setImage(URL.createObjectURL(e.target.files[0]));
+          setImage(URL.createObjectURL(e.target.files[0]));
         }
 
     }
     const submitForm = () => {
         props.setPfpSelectorOpen(false);
+        createImageFromCrop();
     };
-      console.log(props.tempPfp);
+
     return (
         <div>
-            <form onSubmit = {submitForm} encType= "multipart/form-data">
+            <form encType= "multipart/form-data">
             <h1>Select a Club Profile Picture</h1>
-            <input type = "file" name="myImage" accept="image/x-png,image/jpeg" onChange={handleFileInput}/>
-            <ReactCrop crop={crop} onLoad = {onImageLoad} onChange={(_, percentCrop) => setCrop(percentCrop)} circularCrop = {true} keepSelection = {true} aspect = {1}>
-                <img id="target" src={image} />
+            {showImageLoading && <p>Image Loading...</p>}
+            <input type = "file" name="myImage" accept="image/x-png,image/jpeg" onChange={handleFileInput} ref={fileInput} onClick={() => {setShowImageLoading(true)}}/>
+            <ReactCrop crop={crop} onChange={(_, percentCrop) => setCrop(percentCrop)} circularCrop = {true} keepSelection = {true} aspect = {1} style={{maxWidth: "40%"}}>
+                <img id="target" src={image} onLoad = {onImageLoad} style={{maxWidth: "100%", height: "auto"}}/>
             </ReactCrop>
             
             <button onClick={e => fileInput.current && fileInput.current.click()}>Select File</button>
             
-            <input type ="button" value="Submit" onClick = {() => {props.handleFile(image)}}/>
-            
+            <input type ="button" value="Submit" onClick = {submitForm}/>
 
             </form>
+
+            <canvas style={{visiblity: "none"}} id="invisible-canvas"></canvas>
         </div>
     ); 
 }
