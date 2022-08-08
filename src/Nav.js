@@ -45,7 +45,7 @@ function Nav(props) {
         <img src = {require("./img/link.png")} alt="Logo Link" className = "link_icon"/>
 
           <p className="nav-title">CCA Club Hub</p>
-          {props.isLoggedIn && <button className = "logOutButton">Log Out</button>}
+          {props.isLoggedIn && <button className = "logOutButton" onClick={() => {props.logOut(navigate)}}>Log Out</button>}
         </div>
           <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
             <li className="buttonLi"><a onClick={() => navigate("/featured-page")} className="button" unselectable="on">Home</a></li>

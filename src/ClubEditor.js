@@ -56,6 +56,15 @@ const ClubEditor = () => {
         }
     }, [refresh]);
 
+    //Change description height when clubDescription state is edited directly (when loading club JSON information from server)
+    useEffect(() => {
+        if(textAreaRef.current == null) {
+            return;
+        }
+        textAreaRef.current.style.height = "0px";
+		textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
+    }, [clubDescription])
+
 
     if(clubInfo === null) {
         return (
@@ -75,7 +84,7 @@ const ClubEditor = () => {
                 <h1 className="clubProfileTitle">{clubName}</h1>
                 <textarea value = {clubDescription} ref={textAreaRef} onChange={onDescriptionChange} className="clubDescriptionEditor"/>
                 {/*MAKE BUTTON CSS */} 
-                <button className = "descChangeButton" onClick = {onDescriptionSubmit}>Submit</button> 
+                <button className = "descChangeButton" onClick = {onDescriptionSubmit}>Submit Change</button> 
                 {/* MAKE CLUB EDITOR AND MODAL CSS */}
                 <ClubEditorTags clubTags = {clubTags} setClubTags = {setClubTags} setRefresh = {setRefresh}/>      
             </div>

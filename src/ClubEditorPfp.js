@@ -27,7 +27,7 @@ const ClubEditorPfp = (props) => {
         <img className="clubProfilePicture" src = {(props.clubPfp == null) ? require("./img/ccalogo.png") : props.clubPfp} onClick = {() => {
                 setPfpSelectorOpen(true);
         }} />
-           <div class="editOverlay" onClick = {() => {
+           <div className="editOverlay" onClick = {() => {
                 setPfpSelectorOpen(true);
         }}>Edit</div>
         </div>

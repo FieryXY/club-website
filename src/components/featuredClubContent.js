@@ -6,12 +6,15 @@ function FeaturedClubContent({ featuredClubs, setFeaturedClubs, clubIndex}) {
 
   let navigate = useNavigate();
 
-  let imageSource = featuredClubs[clubIndex].mediaURL.trim();
+  let imageSource = featuredClubs[clubIndex].mediaURL
+  if(imageSource != null) {
+    imageSource = imageSource.trim()
+  }
 
 
   return (
     <div>
-      <h2 onClick={() => navigate("/club-information/"+featuredClubs[clubIndex].clubId)}>{featuredClubs[clubIndex].clubName}</h2>
+      <h2 onClick={(featuredClubs[clubIndex].clubId != null) ? () => navigate("/club-information/"+featuredClubs[clubIndex].clubId) : null}>{featuredClubs[clubIndex].clubName}</h2>
       <div className="featured-club-inner-img-div">
         <img className="featured-club-img" src={(imageSource == null || imageSource.length == 0) ? require("../img/ccalogo.png") : imageSource}></img>
       </div>
