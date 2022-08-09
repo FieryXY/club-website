@@ -77,9 +77,29 @@
     color:#EEEEEE;
 }
 
+.pfpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.pfpFileInput {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.pfpFileInput #file-upload-button {
+    color: red;
+}
+
 .descChangeButton{
     text-decoration: none;
-    margin-left: 5%;
+    margin-top: 20px;
+    margin-right: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 10px;
@@ -90,7 +110,13 @@
     white-space: nowrap;
     color: #EEEEEE;
     cursor: pointer;
+    transition: background 0.5s;
 }
+
+.descChangeButton:active {
+    background: #b21e1e
+}
+
 .clubProfileTagDiv {
     margin-top: 3rem;
 }

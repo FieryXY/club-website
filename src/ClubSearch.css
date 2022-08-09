@@ -214,6 +214,11 @@ input[type=button]:hover {
     background-color: #303841;
 }
 
+.tagUnselected {
+    color: white;
+    background-color: #D72323;
+}
+
 .tagWithSmallerMargin:hover {
     color: white;
     background-color: #ae3131;

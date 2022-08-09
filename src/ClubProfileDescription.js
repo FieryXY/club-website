@@ -12,6 +12,19 @@ import {
 
 const ClubProfileDescription = (props) => {
 
+    const formatURL = (url) => {
+
+        if (url === null) {
+            return null;
+        }
+
+        if(!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "http://" + url;
+        }
+        return url;
+    }
+
+
     if(props.clubInfo == null) {
         return (
             <h1 className="clubProfileTitle" style={{textAlign: "center"}}>Unable to Load Club Profile for this Club</h1>
@@ -41,15 +54,15 @@ return (
 <div className="twoColumnContainer">
         <div className="twoColumnElement verticalCenter">
             <div style={{position: "relative", width:"50%"}}>
-                <img className="clubProfilePicture" src = {(props.clubInfo["profilePictureUrl"] === null) ? "./img/ccalogo.png" : props.clubInfo["profilePictureUrl"]}/>
+                <img className="clubProfilePicture" src = {(props.clubInfo["profilePictureUrl"] === null) ? require("./img/ccalogo.png") : props.clubInfo["profilePictureUrl"]}/>
             </div>
             <div className="linkShelf">
-                <a className= {(clubwebsite === null) ? "socialnull" : "social"}><IdcardOutlined style= {{color: '#FFFFFF'}} href = {clubwebsite}/></a>
-                <a className={(instagram === null) ? "socialnull" : "social"}><InstagramOutlined style= {{color: '#FFFFFF'}} href = {instagram}/></a> 
-                <a className={(email === null) ? "socialnull" : "social"}><MailOutlined style= {{color: '#FFFFFF'}} href = {email}/></a>
-                <a className = {(classroom == null) ? "socialnull" : "social"} href = {classroom}><img style={{height: "85%"}} src = {googleclassroom}/></a>
+                <a className= {(clubwebsite === null) ? "socialnull" : "social"} href = {formatURL(clubwebsite)} target="_blank"><IdcardOutlined style= {{color: '#FFFFFF'}}/></a>
+                <a className={(instagram === null) ? "socialnull" : "social"} href = {formatURL(instagram)} target="_blank"><InstagramOutlined style= {{color: '#FFFFFF'}}/></a> 
+                <a className={(email === null) ? "socialnull" : "social"} href = {email} target="_blank"><MailOutlined style= {{color: '#FFFFFF'}}/></a>
+                <a className = {(classroom == null) ? "socialnull" : "social"} href = {formatURL(classroom)} target="_blank"><img style={{height: "85%"}} src = {googleclassroom}/></a>
 
-                <a className = {(other == null) ? "socialnull" : "social"}><LinkOutlined style= {{color: '#FFFFFF'}} href = {other}/></a>
+                <a className = {(other == null) ? "socialnull" : "social"} href = {formatURL(other)} target="_blank"><LinkOutlined style= {{color: '#FFFFFF'}}/></a>
             </div>
         </div>
         <div className="twoColumnElement" style={{flexGrow:"2"}}>

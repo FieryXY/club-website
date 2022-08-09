@@ -9,18 +9,7 @@ function FeaturedPage() {
 
   useEffect(() => {
 
-    setFeaturedClubs([
-      {
-        "clubId": "1",
-        "clubName": "Club Name",
-        "description": "Description",
-        "mediaURL": ""
-      }
-    ]);
-
       ClubService.getFeaturedClubs().then(response => {
-
-        console.log(response.status);
 
         if(response.status != 200) {
             throw "Backend is Not Responding!"
@@ -29,8 +18,21 @@ function FeaturedPage() {
         return response.json();
     }).then(json => {
           setFeaturedClubs(json);
+          
+          //If there are no clubs in featuredClubs, add a placeholder
+          if(featuredClubs == null || featuredClubs.length == 0) {
+            setFeaturedClubs([
+              {
+                "clubId": null,
+                "clubName": "Club Name",
+                "description": "Description",
+                "mediaURL": null
+              }
+            ]);
+          }
+
       }).catch(exc => {
-        console.log("Request Failed");
+        alert("Request Failed");
       })
   }, []);
 

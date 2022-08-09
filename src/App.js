@@ -13,15 +13,22 @@ import { HashRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 import {Navigate} from "react-router-dom";
 import FeaturedPage from "./components/featuredPage";
 import Modal from 'react-modal';
+import {useNavigate} from "react-router-dom";
 
 Modal.setAppElement("#root"); 
 function App() { 
   
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const logOut = () => {
-    if(localStorage.getItem("accessToken") != null) {
-        localStorage.removeItem("accessToken");
+  const logOut = (navigate) => {
+    if(sessionStorage.getItem("accessToken") != null) {
+      sessionStorage.removeItem("accessToken");
+      sessionStorage.removeItem("clubId");
         setLoggedIn(false);
+
+        let currentURL = window.location.href;
+        if(currentURL.endsWith("#/club-editor")) {
+          navigate("/login")
+        }
     }
   }
 
@@ -34,9 +41,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav isLoggedIn = {isLoggedIn} setLoggedIn = {setLoggedIn}/>
+        <Nav logOut={logOut} isLoggedIn = {isLoggedIn} setLoggedIn = {setLoggedIn}/>
           <Routes>
-              <Route exact path="/" element={<Navigate to="/about"/>}/>
+              <Route exact path="/" element={<Navigate to="/featured-page"/>}/>
               <Route path="/featured-page" element={<FeaturedPage />} />
               <Route path="/about" element={<Intro />} />
               <Route path="/manage-clubs" element={<About />} />

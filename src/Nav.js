@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import './Nav.css';
 
@@ -42,10 +42,10 @@ function Nav(props) {
           <div className="hamburger2" onClick={handleHamburgerClick}></div>
           <div className="hamburger3" onClick={handleHamburgerClick}></div>
         </div>
-        <img src = {require("./img/link.png")} alt="Logo Link" className = "link_icon"/>
+        <img src = {require("./img/link.png")} alt="Logo Link" className = "link_icon" onClick={() => navigate("/featured-page")}/>
 
           <p className="nav-title">CCA Club Hub</p>
-          {props.isLoggedIn && <button className = "logOutButton">Log Out</button>}
+          {props.isLoggedIn && <button className = "logOutButton" onClick={() => {props.logOut(navigate)}}>Log Out</button>}
         </div>
           <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
             <li className="buttonLi"><a onClick={() => navigate("/featured-page")} className="button" unselectable="on">Home</a></li>
