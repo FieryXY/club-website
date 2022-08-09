@@ -41,7 +41,7 @@ const ClubEditor = () => {
         if(refresh) {
             ClubService.doClubInfo(sessionStorage.getItem("clubId")).then(response => {
                 if(response["status"] != 200) {
-                    throw "Backend is not responding"
+                    throw new Error("Backend is not responding")
                 }
                 return response.json();
             }).then(json => {
