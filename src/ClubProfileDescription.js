@@ -1,7 +1,7 @@
 import React, {useParams, useState} from 'react';
 import "./ClubProfile.css";
 import googleclassroom from './img/googleclassroomlogo.png';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import Login from './login.js'; 
 import {
         InstagramOutlined,

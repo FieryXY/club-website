@@ -111,7 +111,20 @@ class ClubService {
             "mode" : "cors",
             body: data
         })
- }
+    }
+    doSendEmail = (email) => {
+        const Body = {
+            "email" : email,
+            "subject" : "Reset Password for Club",
+            "text" : "Hello! <br> Please reset your password by clicking <a href='https://www.google.com/'>link</a>:"
+        };
+        return fetch(BackEndURL + "/api/club/password/reset/email/", {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "POST",
+            "mode" : "cors",
+            "body" : JSON.stringify(Body)
+        })
+    }
 }
 
 

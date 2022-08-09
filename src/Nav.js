@@ -50,8 +50,7 @@ function Nav(props) {
           <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
             <li className="buttonLi"><a onClick={() => navigate("/featured-page")} className="button" unselectable="on">Home</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/club-search")} className="button" unselectable="on">Search Clubs</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/manage-clubs")} className="button" unselectable="on">Manage Clubs</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/asb")} className="button" unselectable="on">ASB</a></li>
+            <li className="buttonLi"><a href="http://www.ccaasb.com/" target="_blank" className="button" unselectable="on">ASB</a></li>
             <li className="buttonLi"><a onClick={() => navigate("/about")} className="button" unselectable="on">About</a></li>
             <li className="buttonLi"><a onClick={() => navigate( (props.isLoggedIn) ? "/club-editor" : "/login" )} className="button" unselectable="on">{(props.isLoggedIn) ? "Club Editor" : "Login"}</a></li>
 

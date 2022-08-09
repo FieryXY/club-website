@@ -23,10 +23,7 @@
     margin-top: 30px;
     background-color: white;
     border-radius: 30px;
-  
     display: flex;
-      
-    background-color: #fcddbb;
   }
   
   .featured-club-arrow-side-column {
@@ -35,10 +32,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
   
   .featured-club-arrow-side-column:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(69, 79, 87);
   }
   
   .featured-club-arrow-side-column.left {
@@ -74,7 +72,7 @@
     margin: 0 auto;
     margin-top: 10px;
     height: 300px;
-    background-color: pink;
+    background-color: white;
   }
   
   .featured-club-inner-description-div {
@@ -83,6 +81,7 @@
     
     font-size: 18px;
     text-align: justify;
+    color: black;
   }
   
   @media (max-width: 800px) {

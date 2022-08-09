@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import "./ClubEditor.css";
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import Modal from 'react-modal';
 import ClubService from './ClubService';
 import SocialModal from './SocialModal';

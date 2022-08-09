@@ -17,7 +17,7 @@ const ClubProfile = () => {
 
             console.log(response.status);
 
-            if(response.status != 200) {
+            if(response.status !== 200) {
                 throw "Backend is Not Responding!"
             }
 

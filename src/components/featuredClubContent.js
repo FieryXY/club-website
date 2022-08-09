@@ -8,7 +8,7 @@ function FeaturedClubContent({ featuredClubs, setFeaturedClubs, clubIndex}) {
 
 
   return (
-    <div>
+    <div className="featured-club-content">
       <h2 onClick={() => navigate("/club-information/"+featuredClubs[clubIndex].clubId)}>{featuredClubs[clubIndex].clubName}</h2>
       <div className="featured-club-inner-img-div">
         <p src={featuredClubs[clubIndex].mediaURL}>Image Placeholder</p>

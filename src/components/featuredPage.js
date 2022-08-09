@@ -77,7 +77,7 @@ function FeaturedPage() {
   return (
     <div className="featured-page-body">
       <div className="featured-clubs-container">
-        <h1>Featured Clubs</h1>
+        <h1 style={{color: "white"}}>Featured Clubs</h1>
         <div id="featuredOuterDiv" className="featured-club-outer-div">
           <div id="left-btn" onClick={clubContentSlideRight} className="featured-club-arrow-side-column left">
             <div className="featured-club-arrow left"></div>
