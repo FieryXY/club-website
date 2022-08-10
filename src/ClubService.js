@@ -1,5 +1,5 @@
 const development = true;
-const BackEndURL = "https://cca-club-service.herokuapp.com"; 
+const BackEndURL = "http://localhost:8080";
 
 class ClubService {
     doLogin(userName, password) {
@@ -111,7 +111,30 @@ class ClubService {
             "mode" : "cors",
             body: data
         })
- }
+    }
+    doSendEmail = (email) => {
+        const Body = {
+            "username" : email,
+        };
+        return fetch(BackEndURL + "/api/club/password/reset/request/", {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "POST",
+            "mode" : "cors",
+            "body" : JSON.stringify(Body)
+        })
+    }
+
+    doGetCode = (code) => {
+        const Body = {
+            "resetCode" : code,
+        };
+        return fetch(BackEndURL + "/api/club/password/reset/verify/", {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "GET",
+            "mode" : "cors",
+            "body" : JSON.stringify(Body)
+        })
+    }
 }
 
 

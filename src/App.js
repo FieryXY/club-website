@@ -14,6 +14,8 @@ import {Navigate} from "react-router-dom";
 import FeaturedPage from "./components/featuredPage";
 import Modal from 'react-modal';
 import {useNavigate} from "react-router-dom";
+import ResetPassword from './ResetPassword'
+import ResetPasswordPage from "./ResetPasswordPage";
 
 Modal.setAppElement("#root"); 
 function App() { 
@@ -51,6 +53,8 @@ function App() {
               <Route path="/club-search" element={<ClubSearchPage />} />
               <Route path="/club-profile/:clubId" element={<ClubProfile />} />
               <Route path="/club-editor" element={<ClubEditor />} />
+              <Route path="/reset-email" element={<ResetPassword />} />
+              <Route path="/reset-password/:code" element={<ResetPasswordPage />} />
               if(!isLoggedIn) {
                 <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}/>} />
               }
