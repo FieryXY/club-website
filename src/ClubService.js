@@ -113,13 +113,24 @@ class ClubService {
         })
     }
     doSendEmail = (email) => {
-        console.log(email);
         const Body = {
             "username" : email,
         };
         return fetch(BackEndURL + "/api/club/password/reset/request/", {
             "headers":  {"Content-Type" : "application/json"},
             "method" : "POST",
+            "mode" : "cors",
+            "body" : JSON.stringify(Body)
+        })
+    }
+
+    doGetCode = (code) => {
+        const Body = {
+            "resetCode" : code,
+        };
+        return fetch(BackEndURL + "/api/club/password/reset/verify/", {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "GET",
             "mode" : "cors",
             "body" : JSON.stringify(Body)
         })

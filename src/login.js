@@ -79,7 +79,7 @@ const Login = (props) => {
                         </div>
                     </div>
 
-                    <p className="form-bottom-message" ><a onClick={() => navigate("/reset-password")}>Forgot your password?</a></p>
+                    <p className="form-bottom-message" ><a onClick={() => navigate("/reset-email")}>Forgot your password?</a></p>
 
 
                 </div>
