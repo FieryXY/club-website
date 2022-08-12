@@ -135,6 +135,20 @@ class ClubService {
             "body" : JSON.stringify(Body)
         })
     }
+
+    doResetPassword = (password, code) => {
+        const Body = {
+            "resetCode" : code,
+            "newPassword" : password,
+        };
+        return fetch(BackEndURL + "/api/club/password/reset", {
+            "headers":  {"Content-Type" : "application/json"},
+            "method" : "POST",
+            "mode" : "cors",
+            "body" : JSON.stringify(Body)
+        })
+    }
+
 }
 
 
