@@ -1,5 +1,5 @@
 const development = true;
-const BackEndURL = "http://localhost:8080";
+const BackEndURL = process.env.REACT_APP_BACKEND_URL;
 
 class ClubService {
     doLogin(userName, password) {
