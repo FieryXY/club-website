@@ -254,6 +254,7 @@
     border-color: black;
     border-bottom-width: 3px;
     border-style: solid;
+    cursor: pointer;
   }
 
   nav {
@@ -263,5 +264,6 @@
   .menuIconContainer {
     display: inline-block;
     visibility: visible;
+    cursor: pointer;
   }
 }
