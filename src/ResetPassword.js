@@ -37,7 +37,9 @@ const ResetPassword = () => {
         <>
             <h1 className='reset-text'>Reset Password</h1>
             <div className='reset-password'>
-                <input onKeyPress={handleKeyPress} id="resetEmail" onChange={handleChange} value={email} className='email-input' placeholder='Enter your username' />
+                <input onKeyPress={handleKeyPress} id="resetEmail" 
+                onChange={handleChange} value={email} className='email-input'
+                    placeholder='Enter your username' />
                 <button className='submit' onClick={onSendEmail}>Submit</button>
             </div>
         </>

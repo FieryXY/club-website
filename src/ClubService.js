@@ -1,5 +1,5 @@
 const development = true;
-const BackEndURL = "http://localhost:8080";
+const BackEndURL = "https://cca-club-service.herokuapp.com";
 
 class ClubService {
     doLogin(userName, password) {
@@ -130,7 +130,7 @@ class ClubService {
         };
         return fetch(BackEndURL + "/api/club/password/reset/verify/", {
             "headers":  {"Content-Type" : "application/json"},
-            "method" : "GET",
+            "method" : "POST",
             "mode" : "cors",
             "body" : JSON.stringify(Body)
         })
