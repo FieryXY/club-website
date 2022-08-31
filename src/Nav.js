@@ -17,10 +17,16 @@ function Nav(props) {
 
 
   const onResize = () => {
-    console.log("Hi")
     if(window.innerWidth > 900) {
       setDisplayMobileNav(false);
     }
+  }
+
+  const navClickURL = (url) => {
+    if(displayMobileNav) {
+      setDisplayMobileNav(false);
+    }
+    navigate(url);
   }
 
   
@@ -47,12 +53,12 @@ function Nav(props) {
           {props.isLoggedIn && <button className = "logOutButton" onClick={() => {props.logOut(navigate)}}>Log Out</button>}
         </div>
           <ul className='nav-links' style={displayMobileNav ? {transform: "translateY(100%)"} : {}}>
-            <li className="buttonLi"><a onClick={() => navigate("/featured-page")} className="button" unselectable="on">Home</a></li>
-            <li className="buttonLi"><a onClick={() => navigate("/club-search")} className="button" unselectable="on">Search Clubs</a></li>
-            <li className="buttonLi"><a href='http://www.ccaasb.com/' target="_blank" className="button" unselectable="on">ASB</a></li>
-            {/*<li className="buttonLi"><a onClick={() => navigate("/about")} className="button" unselectable="on">About</a></li>*/}
-            <li className="buttonLi"><a onClick={() => navigate( (props.isLoggedIn) ? "/club-editor" : "/login" )} className="button" unselectable="on">{(props.isLoggedIn) ? "Club Editor" : "Login"}</a></li>
-
+            <li className="buttonLi"><a onClick={() => navClickURL("/featured-page")} className="button" unselectable="on">Home</a></li>
+            <li className="buttonLi"><a onClick={() => navClickURL("/club-search")} className="button" unselectable="on">Search Clubs</a></li>
+            <li className="buttonLi"><a onClick={() => navClickURL("/manage-clubs")} className="button" unselectable="on">Manage Clubs</a></li>
+            <li className="buttonLi"><a onClick={() => navClickURL("/asb")} className="button" unselectable="on">ASB</a></li>
+            <li className="buttonLi"><a onClick={() => navClickURL("/about")} className="button" unselectable="on">About</a></li>
+            <li className="buttonLi"><a onClick={() => navClickURL( (props.isLoggedIn) ? "/club-editor" : "/login" )} className="button" unselectable="on">{(props.isLoggedIn) ? "Club Editor" : "Login"}</a></li>
         </ul>
     </nav>  
   );

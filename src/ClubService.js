@@ -1,8 +1,8 @@
 const development = true;
-const BackEndURL = "https://cca-club-service.herokuapp.com";
+const BackEndURL = process.env.REACT_APP_BACKEND_URL;
 
 class ClubService {
-    doLogin(userName, password) {
+    doLogin = (userName, password) => {
         const Body = {
             "username" : userName, 
             "password" : password
