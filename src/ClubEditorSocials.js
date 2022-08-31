@@ -28,7 +28,7 @@ const ClubEditorSocials = (props) => {
                 for(const social of props.clubSocials) {
                         if(social["socialName"] === "Club Website") setClubWebsite(social["socialLink"]);
                         if(social["socialName"] === "Instagram") setInstagram(social["socialLink"]);
-                        if(social["socialName"] === "Email") setEmail("mailto:" + social["socialLink"]);
+                        if(social["socialName"] === "Email") setEmail(social["socialLink"]);
                         if(social["socialName"] === "Classroom") setClassroom(social["socialLink"]);
                         if(social["socialName"] === "Other") setOther(social["socialLink"]);
         }}, [props.clubSocials])
@@ -44,7 +44,7 @@ const ClubEditorSocials = (props) => {
                                 setSocialModalIsOpen(false);
                                 setCurrentSocial(null);           
                         }}>
-                        <SocialModal setSocialModalIsOpen={setSocialModalIsOpen} socialMap = {{"Club Website" : clubwebsite, "Instagram" : instagram, "Email" : (email != null) ? email.substring(7) : null, "Classroom": classroom, "Other" : other}} setRefresh = {props.setRefresh} 
+                        <SocialModal setSocialModalIsOpen={setSocialModalIsOpen} socialMap = {{"Club Website" : clubwebsite, "Instagram" : instagram, "Email" : email, "Classroom": classroom, "Other" : other}} setRefresh = {props.setRefresh} 
                                 setCurrentSocial = {setCurrentSocial} currentSocial = {currentSocial} setClubSocials = {props.setClubSocials}/>
                 </Modal>
                 <div className="linkShelf">

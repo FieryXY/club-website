@@ -130,7 +130,7 @@ class ClubService {
         };
         return fetch(BackEndURL + "/api/club/password/reset/verify/", {
             "headers":  {"Content-Type" : "application/json"},
-            "method" : "GET",
+            "method" : "POST",
             "mode" : "cors",
             "body" : JSON.stringify(Body)
         })

@@ -3,6 +3,14 @@ import "./ClubEditor.css";
 import './ClubSearch.css';
 import ClubService from './ClubService';
 
+const socialPrompts = {
+    "Club Website": "Enter the website of the club",
+    "Instagram": "Enter an Instagram handle",
+    "Email": "Enter an email address",
+    "Classroom": "Enter a Google Classroom invite link",
+    "Other": "Enter any link"
+}
+
 const SocialModal = (props) => {
     let name = props.currentSocial;
     const [link, setLink] = useState(props.socialMap[name]);
@@ -32,7 +40,7 @@ const SocialModal = (props) => {
 
     return(
         <>
-            <h1 className="clubSearchPageH1">Change {props.currentSocial} Link</h1>
+            <h1 className="clubSearchPageH1">{socialPrompts[name]}</h1>
             <input value = {link} onChange={onDescriptionChange} className="socialLinkEditor" onKeyPress = {handleKeyPress}/>
             <button className = "descChangeButton" onClick = {onLinkSubmit}>Submit</button> 
             <button className = "descChangeButton" onClick = {onLinkRemove}>Remove Link</button> 

@@ -59,7 +59,6 @@ function Nav(props) {
             <li className="buttonLi"><a onClick={() => navClickURL("/asb")} className="button" unselectable="on">ASB</a></li>
             <li className="buttonLi"><a onClick={() => navClickURL("/about")} className="button" unselectable="on">About</a></li>
             <li className="buttonLi"><a onClick={() => navClickURL( (props.isLoggedIn) ? "/club-editor" : "/login" )} className="button" unselectable="on">{(props.isLoggedIn) ? "Club Editor" : "Login"}</a></li>
-
         </ul>
     </nav>  
   );
